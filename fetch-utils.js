@@ -1,7 +1,10 @@
+import { renderItem } from './render-utils';
+
 const SUPABASE_URL = '';
 const SUPABASE_KEY = '';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const listDisplayDiv = document.getElementById('list-display');
 
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
@@ -86,10 +89,13 @@ export async function buyItem(id) {
 }
 
 export async function fetchAndDisplayList() {
-    //clear dom of list display div
-    //get all items
-    //for each item
-        //render
-        //display
-        //add event listener to mark as complete
+    listDisplayDiv.innerHTML = '';
+    let items = await getItems();
+    for (let item of items) {
+        let renderedItem = renderItem(item);
+        renderedItem.addEventListener('click', async () => {
+            await buyItem(item.id);
+        });
+        listDisplayDiv.append(renderedItem);
+    }
 }
