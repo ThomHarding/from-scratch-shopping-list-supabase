@@ -95,6 +95,7 @@ export async function fetchAndDisplayList() {
         let renderedItem = renderItem(item);
         renderedItem.addEventListener('click', async () => {
             await buyItem(item.id);
+            await fetchAndDisplayList();
         });
         listDisplayDiv.append(renderedItem);
     }

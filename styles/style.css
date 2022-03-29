@@ -132,6 +132,7 @@ footer {
 
 .complete {
     background-color: green;
+    text-decoration: line-through;
 }
 
 .incomplete {
