@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
-    <title>Document</title>
+    <title>From Scratch Shopping List</title>
 </head>
 
 <body>
@@ -20,13 +20,19 @@
         </div>
     </header>    
     <button id="logout">Logout</button>
-    <main>
-        <h1>You are logged in!</h1>
-    </main>
+    <form id="shopping-list-form">
+        <input type="number" name="item-amount">
+        <input name="item-name">
+        <button id="add-item-button">Add Item</button>
+    </form>
+    <div id="list-display">
+
+    </div>
+    <button id="delete-button">Delete</button>
     <footer>
-        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
+        <div class="copy gutter-right">&copy; 2022 Aspiring Developer</div>
     </footer>
-    <script type="module" src="./other-page.js"></script>
+    <script type="module" src="./shopping-list.js"></script>
 </body>
 
 </html>
