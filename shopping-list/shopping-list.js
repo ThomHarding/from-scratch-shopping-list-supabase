@@ -7,3 +7,7 @@ const logoutButton = document.getElementById('logout');
 logoutButton.addEventListener('click', () => {
     logout();
 });
+
+//form submit event listener
+    //add item to supabase
+    //fetchanddisplayitems()

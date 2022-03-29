@@ -37,28 +37,55 @@ export async function logout() {
     return (window.location.href = '../');
 }
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
-
-async function createItem(item) {
-    //insert item into supabase
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
 }
 
-async function deleteAllItems() {
-    //delete all items in supabase
+export async function createItem(item) {
+    const response = await client
+        .from ('shopping_list_items')
+        .insert({
+            amount: item.amount,
+            item_name: item.item_name,
+            is_bought: false,
+            user_id: client.auth.user().id,
+        })
+        .single();
+    return checkError(response);
 }
 
-async function getItems() {
-    //get all items in supabase
+export async function deleteAllItems() {
+    const response = await client
+        .from('shopping_list_items')
+        .delete()
+        .match({ user_id: client.auth.user().id });    
+    return checkError(response);
 }
 
-async function buyItem(id) {
-    //get the item that matches id in supabase
-    //update its complete to true
+export async function getItems() {
+    const response = await client
+        .from ('shopping_list_items')
+        .select()
+        .match({ user_id: client.auth.user().id })
+        .order('complete', { ascending: true });
+    return checkError(response);
 }
 
-async function fetchAndDisplayList() {
+export async function buyItem(id) {
+    const response = await client
+        .from ('shopping_list_items')
+        .update({
+            is_bought: true
+        })
+        .match({
+            user_id: client.auth.user().id,
+            id: id,
+        })
+        .single();
+    return checkError(response);
+}
+
+export async function fetchAndDisplayList() {
     //clear dom of list display div
     //get all items
     //for each item
