@@ -8,8 +8,8 @@ export function renderItem(item) {
         itemDiv.classList.add('incomplete');
     }
     itemDiv.classList.add('item');
-    quantityPara.textContent = item.amount;
-    namePara.textContent = item.item_name;
+    quantityPara.textContent = 'Amount: ' + item.amount;
+    namePara.textContent = 'Item: ' + item.item_name;
     itemDiv.append(quantityPara, namePara);
     return itemDiv;
 }
