@@ -129,3 +129,15 @@ footer {
 .auth-container button {
     margin: 10px;
 }
+
+.complete {
+    background-color: green;
+}
+
+.incomplete {
+    background-color: lightslategrey;
+}
+
+.item {
+    border: 1px solid black;
+}
