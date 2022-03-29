@@ -12,8 +12,8 @@ logoutButton.addEventListener('click', () => {
 itemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     let data = new FormData(itemForm);
-    let Item = data.get('Item');
-    await createItem(Item);
+    let item = { item_name: data.get('item-name'), amount: data.get('item-amount') };
+    await createItem(item);
     itemForm.reset();
     fetchAndDisplayList();
 });

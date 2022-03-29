@@ -70,7 +70,7 @@ export async function getItems() {
         .from ('shopping_list_items')
         .select()
         .match({ user_id: client.auth.user().id })
-        .order('complete', { ascending: true });
+        .order('is_bought', { ascending: true });
     return checkError(response);
 }
 
